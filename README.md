@@ -53,7 +53,7 @@ connects our app to redux
 - create store.js
 
 ```js
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {},
@@ -65,13 +65,13 @@ export const store = configureStore({
 - index.js
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
 // import store and provider
-import { store } from './store';
-import { Provider } from 'react-redux';
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -79,7 +79,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 ```
 
@@ -90,7 +90,7 @@ ReactDOM.render(
 - create cartSlice.js
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartItems: [],
@@ -100,7 +100,7 @@ const initialState = {
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
 });
 
@@ -112,8 +112,8 @@ export default cartSlice.reducer;
 - store.js
 
 ```js
-import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from './features/cart/cartSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./features/cart/cartSlice";
 
 export const store = configureStore({
   reducer: {
@@ -131,8 +131,8 @@ export const store = configureStore({
 - create components/Navbar.js
 
 ```js
-import { CartIcon } from '../icons';
-import { useSelector } from 'react-redux';
+import { CartIcon } from "../icons";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { amount } = useSelector((state) => state.cart);
@@ -170,7 +170,7 @@ nav svg {
 - cartSlice.js
 
 ```js
-import cartItems from '../../cartItems';
+import cartItems from "../../cartItems";
 
 const initialState = {
   cartItems: cartItems,
@@ -184,9 +184,9 @@ const initialState = {
 - CartContainer.js
 
 ```js
-import React from 'react';
-import CartItem from './CartItem';
-import { useSelector } from 'react-redux';
+import React from "react";
+import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
 
 const CartContainer = () => {
   const { cartItems, total, amount } = useSelector((state) => state.cart);
@@ -234,8 +234,8 @@ export default CartContainer;
 - CartItem.js
 
 ```js
-import React from 'react';
-import { ChevronDown, ChevronUp } from '../icons';
+import React from "react";
+import { ChevronDown, ChevronUp } from "../icons";
 
 const CartItem = ({ id, img, title, price, amount }) => {
   return (
@@ -273,7 +273,7 @@ export default CartItem;
 
 ```js
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     clearCart: (state) => {
@@ -288,7 +288,7 @@ export const { clearCart } = cartSlice.actions;
 - create action
 
 ```js
-const ACTION_TYPE = 'ACTION_TYPE';
+const ACTION_TYPE = "ACTION_TYPE";
 
 const actionCreator = (payload) => {
   return { type: ACTION_TYPE, payload: payload };
@@ -298,9 +298,9 @@ const actionCreator = (payload) => {
 - CartContainer.js
 
 ```js
-import React from 'react';
-import CartItem from './CartItem';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import CartItem from "./CartItem";
+import { useDispatch, useSelector } from "react-redux";
 
 const CartContainer = () => {
   const dispatch = useDispatch();
@@ -325,8 +325,8 @@ export default CartContainer;
 - cartSlice.js
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
-import cartItems from '../../cartItems';
+import { createSlice } from "@reduxjs/toolkit";
+import cartItems from "../../cartItems";
 
 const initialState = {
   cartItems: [],
@@ -336,7 +336,7 @@ const initialState = {
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     clearCart: (state) => {
@@ -376,11 +376,11 @@ export default cartSlice.reducer;
 - CartItem.js
 
 ```js
-import React from 'react';
-import { ChevronDown, ChevronUp } from '../icons';
+import React from "react";
+import { ChevronDown, ChevronUp } from "../icons";
 
-import { useDispatch } from 'react-redux';
-import { removeItem, increase, decrease } from '../features/cart/cartSlice';
+import { useDispatch } from "react-redux";
+import { removeItem, increase, decrease } from "../features/cart/cartSlice";
 
 const CartItem = ({ id, img, title, price, amount }) => {
   const dispatch = useDispatch();
@@ -437,11 +437,11 @@ export default CartItem;
 - App.js
 
 ```js
-import { useEffect } from 'react';
-import Navbar from './components/Navbar';
-import CartContainer from './components/CartContainer';
-import { useSelector, useDispatch } from 'react-redux';
-import { calculateTotals } from './features/cart/cartSlice';
+import { useEffect } from "react";
+import Navbar from "./components/Navbar";
+import CartContainer from "./components/CartContainer";
+import { useSelector, useDispatch } from "react-redux";
+import { calculateTotals } from "./features/cart/cartSlice";
 
 function App() {
   const { cartItems } = useSelector((state) => state.cart);
@@ -503,13 +503,13 @@ return (
 - create features/modal/modalSlice.js
 
 ```js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isOpen: false,
 };
 
 const modalSlice = createSlice({
-  name: 'modal',
+  name: "modal",
   initialState,
   reducers: {
     openModal: (state, action) => {
@@ -544,7 +544,7 @@ return (
 - CartContainer.js
 
 ```js
-import { openModal } from '../features/modal/modalSlice';
+import { openModal } from "../features/modal/modalSlice";
 
 return (
   <button
@@ -561,9 +561,9 @@ return (
 - Modal.js
 
 ```js
-import { closeModal } from '../features/modal/modalSlice';
-import { useDispatch } from 'react-redux';
-import { clearCart } from '../features/cart/cartSlice';
+import { closeModal } from "../features/modal/modalSlice";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../features/cart/cartSlice";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -611,18 +611,18 @@ export default Modal;
 - lifecycle actions
 
 ```js
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const url = 'https://course-api.com/react-useReducer-cart-project';
+const url = "https://course-api.com/react-useReducer-cart-project";
 
-export const getCartItems = createAsyncThunk('cart/getCartItems', () => {
+export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
   return fetch(url)
     .then((resp) => resp.json())
     .catch((err) => console.log(error));
 });
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   extraReducers: {
     [getCartItems.pending]: (state) => {
@@ -643,7 +643,7 @@ const cartSlice = createSlice({
 - App.js
 
 ```js
-import { calculateTotals, getCartItems } from './features/cart/cartSlice';
+import { calculateTotals, getCartItems } from "./features/cart/cartSlice";
 
 function App() {
   const { cartItems, isLoading } = useSelector((state) => state.cart);
@@ -682,7 +682,7 @@ npm install axios
 
 ```js
 export const getCartItems = createAsyncThunk(
-  'cart/getCartItems',
+  "cart/getCartItems",
   async (name, thunkAPI) => {
     try {
       // console.log(name);
@@ -693,7 +693,7 @@ export const getCartItems = createAsyncThunk(
 
       return resp.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue('something went wrong');
+      return thunkAPI.rejectWithValue("something went wrong");
     }
   }
 );
@@ -705,7 +705,7 @@ cart/cartSlice
 
 ```js
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     // reducers
